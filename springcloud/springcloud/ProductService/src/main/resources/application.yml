@@ -1,0 +1,32 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: luzhe-service
+  #设置为true时，后定义的bean会覆盖之前定义的相同名称的bean
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    username: root
+    password: 666666
+    url: jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.gwm.entity
+
+logging:
+  level:
+    com.gwm.mapper: debug
+
+eureka:
+  client:
+    serviceUrl:
+      #    注册中心的地址
+      defaultZone: http://localhost:10086/eureka/,http://127.0.0.1:10087/eureka/
+  instance:
+    # 将自己的IP地址注册到注册中心
+    prefer-ip-address: true
+
